@@ -79,18 +79,19 @@
              nbttagcompound1.func_74757_a("keepPacked", false);
              nbttaglist2.add((INBTBase)nbttagcompound1);
           } else {
-@@ -442,6 +450,10 @@
+@@ -442,6 +450,11 @@
  
        p_75820_3_.func_74782_a("Heightmaps", nbttagcompound2);
        p_75820_3_.func_74782_a("Structures", this.func_202160_a(p_75820_1_.field_76635_g, p_75820_1_.field_76647_h, p_75820_1_.func_201609_c(), p_75820_1_.func_201604_d()));
 +
 +      try{
 +          final NBTTagCompound capTag = p_75820_1_.writeCapsToNBT();
-+          if (capTag != null) p_75820_3_.func_74782_a("ForgeCaps", capTag);} catch (Exception exception){org.apache.logging.log4j.LogManager.getLogger().error("A capability provider has thrown an exception trying to write state. It will not persist. Report this to the mod author", exception);}
++          if (capTag != null) p_75820_3_.func_74782_a("ForgeCaps", capTag);}
++      catch (Exception exception){org.apache.logging.log4j.LogManager.getLogger().error("A capability provider has thrown an exception trying to write state. It will not persist. Report this to the mod author", exception);}
     }
  
     private Chunk func_75823_a(IWorld p_75823_1_, NBTTagCompound p_75823_2_) {
-@@ -508,6 +520,7 @@
+@@ -508,6 +521,7 @@
           chunk.func_177427_f(true);
        }
  
@@ -98,7 +99,7 @@
        return chunk;
     }
  
-@@ -809,4 +822,5 @@
+@@ -809,4 +823,5 @@
  
        return flag;
     }
