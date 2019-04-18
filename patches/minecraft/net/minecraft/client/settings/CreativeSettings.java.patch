@@ -1,22 +1,6 @@
 --- a/net/minecraft/client/settings/CreativeSettings.java
 +++ b/net/minecraft/client/settings/CreativeSettings.java
-@@ -1,13 +1,14 @@
- package net.minecraft.client.settings;
- 
- import com.mojang.datafixers.DataFixTypes;
--import com.mojang.datafixers.DataFixer;
- import java.io.File;
- import net.minecraft.nbt.CompressedStreamTools;
- import net.minecraft.nbt.NBTTagCompound;
- import net.minecraft.nbt.NBTUtil;
- import net.minecraftforge.api.distmarker.Dist;
- import net.minecraftforge.api.distmarker.OnlyIn;
-+import net.minecraftforge.fml.fixers.ModFixes;
-+
- import org.apache.logging.log4j.LogManager;
- import org.apache.logging.log4j.Logger;
- 
-@@ -15,13 +16,11 @@
+@@ -15,13 +15,11 @@
  public class CreativeSettings {
     private static final Logger field_192566_b = LogManager.getLogger();
     private final File field_192567_c;
@@ -32,12 +16,12 @@
  
        for(int i = 0; i < 9; ++i) {
           this.field_192568_d[i] = new HotbarSnapshot();
-@@ -40,7 +39,7 @@
+@@ -40,7 +38,7 @@
              nbttagcompound.func_74768_a("DataVersion", 1343);
           }
  
 -         nbttagcompound = NBTUtil.func_210822_a(this.field_206251_c, DataFixTypes.HOTBAR, nbttagcompound, nbttagcompound.func_74762_e("DataVersion"));
-+         nbttagcompound = NBTUtil.update(ModFixes.getFixVersions(nbttagcompound, nbttagcompound.func_74762_e("DataVersion"), -1, true), DataFixTypes.HOTBAR, nbttagcompound);
++         nbttagcompound = NBTUtil.update(net.minecraftforge.fml.fixers.ModFixes.getFixVersions(nbttagcompound, nbttagcompound.func_74762_e("DataVersion"), -1, true), DataFixTypes.HOTBAR, nbttagcompound);
  
           for(int i = 0; i < 9; ++i) {
              this.field_192568_d[i].func_192833_a(nbttagcompound.func_150295_c(String.valueOf(i), 10));

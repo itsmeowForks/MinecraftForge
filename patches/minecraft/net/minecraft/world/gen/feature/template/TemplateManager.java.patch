@@ -1,14 +1,6 @@
 --- a/net/minecraft/world/gen/feature/template/TemplateManager.java
 +++ b/net/minecraft/world/gen/feature/template/TemplateManager.java
-@@ -25,21 +25,21 @@
- import net.minecraft.util.ResourceLocation;
- import net.minecraft.util.ResourceLocationException;
- import net.minecraft.util.Util;
-+import net.minecraftforge.fml.fixers.ModFixes;
-+
- import org.apache.logging.log4j.LogManager;
- import org.apache.logging.log4j.Logger;
- 
+@@ -31,15 +31,13 @@
  public class TemplateManager implements IResourceManagerReloadListener {
     private static final Logger field_195431_a = LogManager.getLogger();
     private final Map<ResourceLocation, Template> field_186240_a = Maps.newHashMap();
@@ -28,12 +20,12 @@
     }
  
     public Template func_200220_a(ResourceLocation p_200220_1_) {
-@@ -128,7 +128,7 @@
+@@ -128,7 +126,7 @@
        }
  
        Template template = new Template();
 -      template.func_186256_b(NBTUtil.func_210822_a(this.field_191154_c, DataFixTypes.STRUCTURE, nbttagcompound, nbttagcompound.func_74762_e("DataVersion")));
-+      template.func_186256_b(NBTUtil.update(ModFixes.getFixVersions(nbttagcompound, nbttagcompound.func_74762_e("DataVersion"), -1, false), DataFixTypes.STRUCTURE, nbttagcompound));
++      template.func_186256_b(NBTUtil.update(net.minecraftforge.fml.fixers.ModFixes.getFixVersions(nbttagcompound, nbttagcompound.func_74762_e("DataVersion"), -1, false), DataFixTypes.STRUCTURE, nbttagcompound));
        return template;
     }
  
